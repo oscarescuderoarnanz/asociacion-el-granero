@@ -2,11 +2,13 @@
 
 Sube aquí las imágenes con estos nombres para que aparezcan en el carrusel de la web:
 
-- `fiesta-01.jpg`
-- `fiesta-02.jpg`
-- `fiesta-03.jpg`
-- `fiesta-04.jpg`
-- `fiesta-05.jpg`
-- `fiesta-06.jpg`
+- `fiesta-01.jpeg`
+- `fiesta-02.jpeg`
+- `fiesta-03.jpeg`
+- `fiesta-04.jpeg`
+- `fiesta-05.jpeg`
+- `fiesta-06.jpeg`
+- `fiesta-07.jpeg`
+- `fiesta-08.jpeg`
 
-También puedes usar `.jpeg` o `.png`, cambiando la extensión en `index.html` si fuese necesario.
+Las imágenes actuales están en formato `.jpeg` y ya están enlazadas en la galería.
