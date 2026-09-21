@@ -40,6 +40,7 @@ if (memoryToggle && memoriesPanel) {
     const isOpen = memoryToggle.getAttribute('aria-expanded') === 'true';
     memoryToggle.setAttribute('aria-expanded', String(!isOpen));
     memoriesPanel.hidden = isOpen;
+    memoriesPanel.classList.toggle('is-open', !isOpen);
     memoryToggle.firstChild.textContent = isOpen ? 'Ver fotografías ' : 'Ocultar fotografías ';
   });
 }
