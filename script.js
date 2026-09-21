@@ -33,8 +33,18 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
   });
 });
 
-const carousel = document.querySelector('.carousel');
-if (carousel) {
+const memoryToggle = document.querySelector('.memory-toggle');
+const memoriesPanel = document.getElementById('memories-panel');
+if (memoryToggle && memoriesPanel) {
+  memoryToggle.addEventListener('click', () => {
+    const isOpen = memoryToggle.getAttribute('aria-expanded') === 'true';
+    memoryToggle.setAttribute('aria-expanded', String(!isOpen));
+    memoriesPanel.hidden = isOpen;
+    memoryToggle.firstChild.textContent = isOpen ? 'Ver fotografías ' : 'Ocultar fotografías ';
+  });
+}
+
+document.querySelectorAll('.carousel').forEach((carousel) => {
   const viewport = carousel.querySelector('.carousel-viewport');
   const track = carousel.querySelector('.carousel-track');
   const slides = [...carousel.querySelectorAll('.carousel-slide')];
@@ -72,4 +82,4 @@ if (carousel) {
     }, { passive: true });
     showSlide(0);
   }
-}
+});
