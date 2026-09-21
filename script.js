@@ -46,6 +46,7 @@ if (memoryToggle && memoriesPanel) {
 }
 
 document.querySelectorAll('.carousel').forEach((carousel) => {
+  const isMemoriesCarousel = carousel.classList.contains('memories-carousel');
   const viewport = carousel.querySelector('.carousel-viewport');
   const track = carousel.querySelector('.carousel-track');
   const slides = [...carousel.querySelectorAll('.carousel-slide')];
@@ -67,7 +68,11 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
 
     function showSlide(index) {
       currentSlide = (index + slides.length) % slides.length;
-      viewport.scrollTo({ left: currentSlide * viewport.clientWidth, behavior: 'smooth' });
+      if (isMemoriesCarousel) {
+        track.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
+      } else {
+        viewport.scrollTo({ left: currentSlide * viewport.clientWidth, behavior: 'smooth' });
+      }
       dots.querySelectorAll('.carousel-dot').forEach((dot, dotIndex) => {
         dot.classList.toggle('is-active', dotIndex === currentSlide);
         dot.setAttribute('aria-current', dotIndex === currentSlide ? 'true' : 'false');
