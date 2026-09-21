@@ -69,7 +69,7 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
     function showSlide(index) {
       currentSlide = (index + slides.length) % slides.length;
       if (isMemoriesCarousel) {
-        track.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
+        slides[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
       } else {
         viewport.scrollTo({ left: currentSlide * viewport.clientWidth, behavior: 'smooth' });
       }
@@ -82,10 +82,12 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
 
     carousel.querySelector('.carousel-prev').addEventListener('click', () => showSlide(currentSlide - 1));
     carousel.querySelector('.carousel-next').addEventListener('click', () => showSlide(currentSlide + 1));
-    viewport.addEventListener('scroll', () => {
-      const nearestSlide = Math.round(viewport.scrollLeft / viewport.clientWidth);
-      if (nearestSlide !== currentSlide) showSlide(nearestSlide);
-    }, { passive: true });
+    if (!isMemoriesCarousel) {
+      viewport.addEventListener('scroll', () => {
+        const nearestSlide = Math.round(viewport.scrollLeft / viewport.clientWidth);
+        if (nearestSlide !== currentSlide) showSlide(nearestSlide);
+      }, { passive: true });
+    }
     showSlide(0);
   }
 });
